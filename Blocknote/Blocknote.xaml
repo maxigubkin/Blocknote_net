@@ -1,0 +1,29 @@
+﻿<Window x:Class="Blocknote.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="{Binding Path=FileName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" InputGestureText="ALT+N" Click="CreateNew" />
+                <MenuItem Header="_Open" InputGestureText="ALT+O" Click="OpenFile" />
+                <MenuItem Header="_Save" InputGestureText="ALT+S" Click="SaveFile" />
+                <MenuItem Header="Save As" Click="SaveAs" />
+                <Separator />
+                <MenuItem Header="_Exit" InputGestureText="ALT+E" Click="AppQuit" />
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="Font" Click="FontSettings" />
+            </MenuItem>
+            <MenuItem Header="Info">
+                <MenuItem Header="About Program" Click="AboutProgram" />
+            </MenuItem>
+        </Menu>
+        <ScrollViewer>
+            <TextBox Text="{Binding Path=Contents, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="txtBox" TextWrapping="Wrap" AcceptsReturn="True" FontFamily="{Binding Path=FontFamily, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="{Binding Path=FontSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </ScrollViewer>
+    </DockPanel>
+</Window>
